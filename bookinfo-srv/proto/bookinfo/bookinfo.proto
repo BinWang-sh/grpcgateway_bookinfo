@@ -1,0 +1,69 @@
+// Code generated with goa v3.0.4, DO NOT EDIT.
+//
+// bookinfo protocol buffer definition
+//
+// Command:
+// $ goa gen goaT1/design
+
+syntax = "proto3";
+
+package bookinfo;
+
+import "google/api/annotations.proto";
+
+option go_package = "bookinfopb";
+
+// The book service makes it possible to get or set book's detail information
+service Bookinfo {
+	// get book information
+	rpc Getall (GetallRequest) returns (GetallResponse) {
+		option (google.api.http) = {
+			post: "/bookinfo/getall"
+			body: "*"
+		};
+	};
+	// add books information
+	rpc Add (AddRequest) returns (AddResponse){
+		option (google.api.http) = {
+			post: "/bookinfo/add"
+			body: "*"
+		};
+	};
+}
+
+message GetallRequest {
+	// ID of user
+	string userid = 1;
+}
+
+message GetallResponse {
+	// Book info list
+	repeated BookInfo bookinfolist = 1;
+}
+
+message BookInfo {
+	// Name of book
+	string book_name = 1;
+	// Author
+	string author = 2;
+	// Chapters name
+	repeated ChapterInfo chapters_info = 3;
+}
+
+message ChapterInfo {
+	// Chapter number
+	sint32 chapter_num = 1;
+	// Chapter name
+	string chapter_name = 2;
+	// Words cound
+	sint32 words_count = 3;
+}
+
+message AddRequest {
+	// Books information
+	repeated BookInfo books_info = 1;
+}
+
+message AddResponse {
+	repeated sint32 field = 1;
+}

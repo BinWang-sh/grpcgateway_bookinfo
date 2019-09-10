@@ -1,0 +1,22 @@
+version: '3'
+services:
+  rpcserver:
+    image: bookinfoservice
+    ports:
+      - 50051:50051
+    build:
+      context: ./service
+  gwserver:
+    image: bookinfogateway
+    ports:
+      - 8080:8080
+    build:
+      context: ./gateway
+    depends_on:
+      - rpcserver
+  client:
+    image: bookinfoclient
+    build:
+      context: ./client
+    depends_on:
+      - gwserver
