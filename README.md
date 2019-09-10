@@ -40,7 +40,7 @@ make build
 ```
 
 
-## Run with docker
+## Run with the docker
 ```bash
 cd Docker
 docker-compose up
