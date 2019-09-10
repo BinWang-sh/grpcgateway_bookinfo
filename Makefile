@@ -5,7 +5,7 @@ cleanproto:
 cleanapp:
 	rm ./Docker/service/servicegrpc
 	rm ./Docker/client/client
-	rm ./Docker/service/gateway
+	rm ./Docker/gateway/gateway
 
 genstubgrpc:
 	protoc -I/usr/local/include -I. \
@@ -20,7 +20,7 @@ genstubmicro:
 gengateway:
 	protoc -I/usr/local/include -I. \
 	-I $(GOPATH)/src \
-	-I $(GOPATH)/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.11.1/third_party/googleapis \
+	-I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 	--grpc-gateway_out=logtostderr=true:. bookinfo-srv/proto/bookinfo/bookinfo.proto
 
 build:
