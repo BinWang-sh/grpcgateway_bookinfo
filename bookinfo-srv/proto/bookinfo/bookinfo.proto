@@ -2,8 +2,6 @@
 //
 // bookinfo protocol buffer definition
 //
-// Command:
-// $ goa gen goaT1/design
 
 syntax = "proto3";
 
