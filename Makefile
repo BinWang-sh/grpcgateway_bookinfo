@@ -10,7 +10,7 @@ cleanapp:
 genstubgrpc:
 	protoc -I/usr/local/include -I. \
 	-I$(GOPATH)/src \
-	-I$(GOPATH)/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.11.1/third_party/googleapis \
+	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 	--go_out=plugins=grpc:. bookinfo-srv/proto/bookinfo/bookinfo.proto
 
 genstubmicro:
